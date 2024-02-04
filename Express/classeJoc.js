@@ -1,6 +1,6 @@
-import { Carta } from "./classeCartes.js";
+const Carta = require('./classeCartes.js');
 
-export class Joc{
+class Joc{
 
     constructor(){;
         this.cartesDisponibles = this.getLlistaCartes();
@@ -46,3 +46,5 @@ export class Joc{
     }
 
 }
+
+module.exports = Joc;

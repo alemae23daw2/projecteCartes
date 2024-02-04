@@ -1,4 +1,4 @@
-export class Carta{
+class Carta{
 
     constructor(numero, pal, disp){
         this.numero = numero;
@@ -23,11 +23,9 @@ export class Carta{
     }
 
     toString(){
-        return `\nCarta{\n numero: ${this.numero}, \n pal: ${this.pal}, \n disp: ${this.disp}}`;
-    }
-
-    repartirCartes(Jugador){
-        
+        return `<br>Carta: ${this.numero} de ${this.pal}`;
     }
 
 }
+
+module.exports = Carta;
