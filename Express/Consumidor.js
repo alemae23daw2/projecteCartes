@@ -36,10 +36,16 @@ window.onload = () => {
 
     botoVeureCartes.addEventListener("click", () => {
         let codiSala = prompt("A quina sala vols fer el teu moviment?");
-        let nJugador = prompt("Quin jugador vols ser?");
-
-        localStorage.setItem(codiSala, nJugador);
-
+        let nJugador;
+        if(localStorage.getItem("jugador")){
+            nJugador = localStorage.getItem("jugador");
+            console.log(nJugador);
+        }else{
+            nJugador = prompt("Quin jugador vols ser?");
+            localStorage.setItem("jugador", nJugador);
+            console.log(nJugador);
+        }
+        
         var cap = new Headers();
         cap.append("Content-Type", "application/json");
 
@@ -65,6 +71,10 @@ window.onload = () => {
     });
 
     botoDemanarCarta.addEventListener("click", () => {
+        let codiSala = prompt("A quina sala vols fer el teu moviment?");
+        let nJugador = localStorage.getItem("jugador");
+        let numeroDesitjat = prompt("Quin numero vols demanar?");
+
         var cap = new Headers();
         cap.append("Content-Type", "application/json");
 
@@ -78,7 +88,7 @@ window.onload = () => {
             referrerPolicy: 'no-referrer'
         };
 
-        var peticio = new Request('https://itunes.apple.com/search?term=queen&media=music&entity=album', initPropi);
+        var peticio = new Request(`http://localhost:3000/demanarCarta?idSala=${codiSala}&nJugador=${nJugador}&numeroDesitjat=${numeroDesitjat}`, initPropi);
 
         fetch(peticio)
             .then(response => {
@@ -90,11 +100,15 @@ window.onload = () => {
     });
 
     botoDescartarCartes.addEventListener("click", () => {
+        let codiSala = prompt("A quina sala vols fer el teu moviment?");
+        let nJugador = localStorage.getItem("jugador");
+        let numeroDescartar = prompt("Quin numero vols descartar?");
+
         var cap = new Headers();
         cap.append("Content-Type", "application/json");
 
         var initPropi = {
-            method: 'GET',
+            method: 'PUT',
             headers: cap,
             mode: 'cors',
             cache: 'default',
@@ -103,7 +117,7 @@ window.onload = () => {
             referrerPolicy: 'no-referrer'
         };
 
-        var peticio = new Request('https://itunes.apple.com/search?term=queen&media=music&entity=album', initPropi);
+        var peticio = new Request(`http://localhost:3000/descartarCartes?idSala=${codiSala}&nJugador=${nJugador}&numeroDescartar=${numeroDescartar}`, initPropi);
 
         fetch(peticio)
             .then(response => {
@@ -115,6 +129,9 @@ window.onload = () => {
     });
 
     botoAcabarJoc.addEventListener("click", () => {
+        let codiSala = prompt("A quina sala vols fer el teu moviment?");
+        let nJugador = localStorage.getItem("jugador");
+
         var cap = new Headers();
         cap.append("Content-Type", "application/json");
 
@@ -128,7 +145,7 @@ window.onload = () => {
             referrerPolicy: 'no-referrer'
         };
 
-        var peticio = new Request('https://itunes.apple.com/search?term=queen&media=music&entity=album', initPropi);
+        var peticio = new Request(`http://localhost:3000/descartarCartes?idSala=${codiSala}&nJugador=${nJugador}`, initPropi);
 
         fetch(peticio)
             .then(response => {

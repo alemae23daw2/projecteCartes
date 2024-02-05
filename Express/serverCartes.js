@@ -149,9 +149,10 @@ app.put('/descartarCartes', function (req, res) {
 app.delete('/acabarJoc', function (req, res) {
     try {
         let idSala = req.query.idSala;
+        let nJugador = req.query.nJugador;
 
         llistaPartides[idSala - 1] = 0;
-        res.json({ missatge: "Partida amb codi " + idSala + " acabada!" });
+        res.json({ missatge: "El jugador " + nJugador + " ha acabat la partida " + idSala + "!" });
     } catch (error) {
         res.json({ missatge: "Error. No s'ha trobat la partida o el jugador" });
     }
