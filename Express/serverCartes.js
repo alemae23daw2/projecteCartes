@@ -5,11 +5,9 @@ var express = require('express');
 var app = express();
 app.use(express.static('public'));
 
-//-----------------------------------------//
 
 let llistaPartides = [];
 
-//-----------------------------------------//
 
 app.get('/', function (req, res) {
     fs.readFile('Consumidor.html', (err, data) => {
