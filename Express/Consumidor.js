@@ -29,9 +29,9 @@ window.onload = () => {
                 return response.json();
             })
             .then(dades => {
-                terminal.innerHTML+= dades.missatge;
-                terminal.innerHTML+= "<br>";
+                terminal.innerHTML+= `<p>${dades.missatge}</p>`;
             });
+        actualitzarPantalla();
     });
 
     botoVeureCartes.addEventListener("click", () => {
@@ -66,8 +66,9 @@ window.onload = () => {
                 return response.json();
             })
             .then(dades => {
-                terminal.innerHTML+= dades.missatge;
+                terminal.innerHTML+= `<p>${dades.missatge}</p>`;
             });
+        actualitzarPantalla();
     });
 
     botoDemanarCarta.addEventListener("click", () => {
@@ -95,8 +96,9 @@ window.onload = () => {
                 return response.json();
             })
             .then(dades => {
-                terminal.innerHTML+= dades.missatge;
+                terminal.innerHTML+= `<p>${dades.missatge}</p>`;
             });
+        actualitzarPantalla();
     });
 
     botoDescartarCartes.addEventListener("click", () => {
@@ -124,8 +126,9 @@ window.onload = () => {
                 return response.json();
             })
             .then(dades => {
-                terminal.innerHTML+= dades.missatge;
+                terminal.innerHTML+= `<p>${dades.missatge}</p>`;
             });
+        actualitzarPantalla();
     });
 
     botoAcabarJoc.addEventListener("click", () => {
@@ -152,8 +155,16 @@ window.onload = () => {
                 return response.json();
             })
             .then(dades => {
-                terminal.innerHTML+= dades.missatge;
+                terminal.innerHTML+= `<p>${dades.missatge}</p>`;
             });
+
+        actualitzarPantalla();
     });
+
+    function actualitzarPantalla(){
+        if(terminal.children.length > 5){
+            terminal.removeChild(terminal.firstElementChild);
+        }
+    }
 
 }
