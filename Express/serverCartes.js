@@ -149,7 +149,7 @@ app.delete('/acabarJoc', function (req, res) {
         let idSala = req.query.idSala;
         let nJugador = req.query.nJugador;
 
-        llistaPartides[idSala - 1] = 0;
+        llistaPartides[idSala - 1] = null;
         res.json({ missatge: "El jugador " + nJugador + " ha acabat la partida " + idSala + "!" });
     } catch (error) {
         res.json({ missatge: "Error. No s'ha trobat la partida o el jugador" });
