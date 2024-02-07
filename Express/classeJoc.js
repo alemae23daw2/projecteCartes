@@ -6,8 +6,6 @@ class Joc{
         this.cartesDisponibles = this.getLlistaCartes();
         this.cartesJugador1 = this.repartirCartes();
         this.cartesJugador2 = this.repartirCartes();
-        this.puntuacioJugador1 = 0;
-        this.puntuacioJugador2 = 0;
     }
 
     getLlistaCartes(){

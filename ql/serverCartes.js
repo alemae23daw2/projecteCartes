@@ -28,25 +28,24 @@ const schema = buildSchema(`
   type Query {
     llistaPartides: [Joc]
     crearSala: CartesResponse
-  }
-  type Mutation {
+    veureCartes(idSala: Int!, nJugador: Int!): CartesResponse
     descartarCartes(idSala: Int!, nJugador: Int!, numeroDescartar: Int!): CartesResponse
-    acabarJoc(idSala: Int, nJugador: Int): String
+    acabarJoc(idSala: Int!, nJugador: Int!): CartesResponse
     demanarCarta(idSala: Int!, nJugador: Int!, numeroDesitjat: Int!): CartesResponse
   }
+
   type Joc {
-    id: Int
+    cartesDisponibles: [Carta]
     cartesJugador1: [Carta]
     cartesJugador2: [Carta]
-    puntuacioJugador1: Int
-    puntuacioJugador2: Int
-
   }
+
   type Carta {
     numero: Int
     pal: String
     disp: Boolean
   }
+
   type CartesResponse {
     missatge: String
   }
@@ -174,15 +173,12 @@ const root = {
 
 acabarJoc: ({ idSala, nJugador }) => {
   try {
-  if (idSala <= 0 || idSala > llistaPartides.length) {
-      throw new Error("Error: No se encontró la partida.");
-  }
 
   llistaPartides[idSala - 1] = null;
 
-  return `El jugador ${nJugador} ha acabado la partida ${idSala}!`;
+  return { missatge: `El jugador ${nJugador} ha acabado la partida ${idSala}!` };
   } catch (error) {
-  return `Error: No se encontró la partida o el jugador.`;
+  return { missatge: "Error. No s'ha trobat la partida o el jugador" };
   }
 }
 };
