@@ -93,7 +93,7 @@ const root = {
             return { missatge: `Has descartat las cartas del número ${numeroDescartar}, has ganado un punto!` };
           } else {
             llistaPartides[idSala - 1].cartesJugador1 = llistaPartides[idSala - 1].cartesJugador1.concat(auxArr);
-            return { missatge: `Has descartat cartas del número ${numeroDescartar}.` };
+            return { missatge: `No tens cartes suficients de ${numeroDescartar}.` };
           }
         } else if (nJugador === 2) {
           let cartesABorrar = 0;
@@ -113,7 +113,7 @@ const root = {
             return { missatge: `Has descartat las cartas del número ${numeroDescartar}, has ganado un punto!` };
           } else {
             llistaPartides[idSala - 1].cartesJugador2 = llistaPartides[idSala - 1].cartesJugador2.concat(auxArr);
-            return { missatge: `Has descartat cartas del número ${numeroDescartar}.` };
+            return { missatge: `No tens cartes suficients de ${numeroDescartar}.` };
           }
         } else {
           return { missatge: "Error. No se ha encontrado el jugador" };
