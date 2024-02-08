@@ -102,6 +102,7 @@ public class JocServer {
                     return "{\"missatge\": \"Has descartat\""+ numeroDescartar+"!}";
                 } else {
                     llistaPartides.get(idSala-1).cartesJugador1.addAll(eliminarCartas);
+                    return "{\"missatge\": \"No tens suficients \""+ numeroDescartar+"!}";
                 }
             } else if (nJugador == 2) {
                 for(int i = 0; i <= llistaPartides.get(idSala - 1).cartesJugador2.size()-1; i++){
@@ -116,15 +117,14 @@ public class JocServer {
                     return "{\"missatge\": \"Has descartat\""+ numeroDescartar+"!}";
                 } else {
                     llistaPartides.get(idSala-1).cartesJugador2.addAll(eliminarCartas);
+                    return "{\"missatge\": \"No tens suficients \""+ numeroDescartar+"!}";
                 }
             } else {
                 return "{\"missatge\": \"Error. No s'ha trobat el jugador\"}";
             }
         } catch (Exception e) {
             return "{\"missatge\": \"Error. No s'ha trobat la partida o el jugador\""+ e +"}";
-
         }
-        return "{\"missatge\": \"Error. No s'ha trobat la partida o el jugador\"}";
     }
 
     @WebMethod
