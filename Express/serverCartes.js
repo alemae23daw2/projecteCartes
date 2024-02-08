@@ -112,8 +112,7 @@ app.put('/descartarCartes', function (req, res) {
                 }
             }
             if (cartesABorrar == 4) {
-                auxArr.length = 0;
-                ArrayJocs[idSala - 1].puntuacioJugador1++;
+                auxArr = null;
                 res.json({ missatge: "Has descartat les cartes del numero " + numeroDescartar + ", has guanyat un punt!" });
             } else {
                 ArrayJocs[idSala - 1].cartesJugador1.concat(auxArr);
@@ -130,8 +129,7 @@ app.put('/descartarCartes', function (req, res) {
                 }
             }
             if (cartesABorrar == 4) {
-                auxArr.length = 0;
-                ArrayJocs[idSala - 1].puntuacioJugador2++;
+                auxArr = null;
                 res.json({ missatge: "Has descartat les cartes del numero " + numeroDescartar + ", has guanyat un punt!" });
             } else {
                 ArrayJocs[idSala - 1].cartesJugador2.concat(auxArr);
