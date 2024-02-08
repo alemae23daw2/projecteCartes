@@ -108,6 +108,7 @@ public class JocServer {
                     return Response.ok().entity("{\"missatge\": \"Has descartat\""+ numeroDescartar+"!}").build();
                 } else {
                     llistaPartides.get(idSala-1).cartesJugador1.addAll(eliminarCartas);
+                    return Response.ok().entity("{\"missatge\": \"No hi han suficients cartes\"}").build();
                 }
             } else if (nJugador == 2) {
                 for(int i = 0; i <= llistaPartides.get(idSala - 1).cartesJugador2.size()-1; i++){
@@ -122,15 +123,14 @@ public class JocServer {
                     return Response.ok().entity("{\"missatge\": \"Has descartat\""+ numeroDescartar+"!}").build();
                 } else {
                     llistaPartides.get(idSala-1).cartesJugador2.addAll(eliminarCartas);
+                    return Response.ok().entity("{\"missatge\": \"No hi han suficients cartes\"}").build();
                 }
             } else {
                 return Response.ok().entity("{\"missatge\": \"Error. No s'ha trobat el jugador\"}").build();
             }
         } catch (Exception e) {
             return Response.ok().entity("{\"missatge\": \"Error. No s'ha trobat la partida o el jugador\""+ e +"}").build();
-
         }
-        return Response.ok().entity("{\"missatge\": \"Error. No s'ha trobat la partida o el jugador\"}").build();
     }
 
     @DELETE
