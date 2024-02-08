@@ -116,6 +116,7 @@ app.put('/descartarCartes', function (req, res) {
                 res.json({ missatge: "Has descartat les cartes del numero " + numeroDescartar + ", has guanyat un punt!" });
             } else {
                 ArrayJocs[idSala - 1].cartesJugador1.concat(auxArr);
+                res.json({ missatge: `No tens cartes suficients de ${numeroDescartar}.` });
             }
         } else if (nJugador == 2) {
             let cartesABorrar = 0;
@@ -133,6 +134,7 @@ app.put('/descartarCartes', function (req, res) {
                 res.json({ missatge: "Has descartat les cartes del numero " + numeroDescartar + ", has guanyat un punt!" });
             } else {
                 ArrayJocs[idSala - 1].cartesJugador2.concat(auxArr);
+                res.json({ missatge: `No tens cartes suficients de ${numeroDescartar}.` });
             }
         } else {
             res.json({ missatge: "Error. No s'ha trobat el jugador" });
