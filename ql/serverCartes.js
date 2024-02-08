@@ -89,8 +89,7 @@ const root = {
           }
   
           if (cartesABorrar === 4) {
-            auxArr.length = 0;
-            llistaPartides[idSala - 1].puntuacioJugador1++;
+            auxArr = null;
             return { missatge: `Has descartat las cartas del número ${numeroDescartar}, has ganado un punto!` };
           } else {
             llistaPartides[idSala - 1].cartesJugador1 = llistaPartides[idSala - 1].cartesJugador1.concat(auxArr);
@@ -110,8 +109,7 @@ const root = {
           }
   
           if (cartesABorrar === 4) {
-            auxArr.length = 0;
-            llistaPartides[idSala - 1].puntuacioJugador2++;
+            auxArr = null;
             return { missatge: `Has descartat las cartas del número ${numeroDescartar}, has ganado un punto!` };
           } else {
             llistaPartides[idSala - 1].cartesJugador2 = llistaPartides[idSala - 1].cartesJugador2.concat(auxArr);
