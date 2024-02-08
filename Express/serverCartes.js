@@ -33,9 +33,9 @@ app.get('/veureCartes', function (req, res) {
         let idSala = req.query.idSala;
         let nJugador = req.query.nJugador;
         if (nJugador == 1) {
-            res.json({ missatge: llistaPartides[idSala - 1].cartesJugador1.toString()});
+            res.json({ missatge: llistaPartides[idSala - 1].cartesJugador1.toString() });
         } else if (nJugador == 2) {
-            res.json({ missatge: llistaPartides[idSala - 1].cartesJugador2.toString()});
+            res.json({ missatge: llistaPartides[idSala - 1].cartesJugador2.toString() });
         } else {
             res.json({ missatge: "Error. No s'ha trobat el jugador" });
         }
@@ -103,44 +103,48 @@ app.put('/descartarCartes', function (req, res) {
         if (nJugador == 1) {
             let cartesABorrar = 0;
             let auxArr = [];
-            for (let i of ArrayJocs[idSala - 1].cartesJugador1) {
-                if (i.numero == numeroDescartar) {
-                    let a = ArrayJocs[idSala - 1].cartesJugador1.indexOf(i);
+
+            for (let i of llistaPartides[idSala - 1].cartesJugador1) {
+                if (i.numero === numeroDescartar) {
+                    let a = llistaPartides[idSala - 1].cartesJugador1.indexOf(i);
                     auxArr.push(i);
-                    ArrayJocs[idSala - 1].cartesJugador1.splice(a, 1);
+                    llistaPartides[idSala - 1].cartesJugador1.splice(a, 1);
                     cartesABorrar++;
                 }
             }
-            if (cartesABorrar == 4) {
+
+            if (cartesABorrar === 4) {
                 auxArr = null;
-                res.json({ missatge: "Has descartat les cartes del numero " + numeroDescartar + ", has guanyat un punt!" });
+                res.json({ missatge: `Has descartat las cartas del número ${numeroDescartar}, has ganado un punto!` });
             } else {
-                ArrayJocs[idSala - 1].cartesJugador1.concat(auxArr);
+                llistaPartides[idSala - 1].cartesJugador1 = llistaPartides[idSala - 1].cartesJugador1.concat(auxArr);
                 res.json({ missatge: `No tens cartes suficients de ${numeroDescartar}.` });
             }
         } else if (nJugador == 2) {
             let cartesABorrar = 0;
             let auxArr = [];
-            for (let i of ArrayJocs[idSala - 1].cartesJugador2) {
-                if (i.numero == numeroDescartar) {
-                    let a = ArrayJocs[idSala - 1].cartesJugador2.indexOf(i);
+
+            for (let i of llistaPartides[idSala - 1].cartesJugador2) {
+                if (i.numero === numeroDescartar) {
+                    let a = llistaPartides[idSala - 1].cartesJugador2.indexOf(i);
                     auxArr.push(i);
-                    ArrayJocs[idSala - 1].cartesJugador2.splice(a, 1);
+                    llistaPartides[idSala - 1].cartesJugador2.splice(a, 1);
                     cartesABorrar++;
                 }
             }
-            if (cartesABorrar == 4) {
+
+            if (cartesABorrar === 4) {
                 auxArr = null;
-                res.json({ missatge: "Has descartat les cartes del numero " + numeroDescartar + ", has guanyat un punt!" });
+                res.json({ missatge: `Has descartat las cartas del número ${numeroDescartar}, has ganado un punto!` });
             } else {
-                ArrayJocs[idSala - 1].cartesJugador2.concat(auxArr);
+                llistaPartides[idSala - 1].cartesJugador2 = llistaPartides[idSala - 1].cartesJugador2.concat(auxArr);
                 res.json({ missatge: `No tens cartes suficients de ${numeroDescartar}.` });
             }
         } else {
-            res.json({ missatge: "Error. No s'ha trobat el jugador" });
+            res.json({ missatge: "Error. No se ha encontrado el jugador" });
         }
     } catch (error) {
-        res.json({ missatge: "Error. No s'ha trobat la partida o el jugador" });
+        res.json({ missatge: "Error. No se ha encontrado la partida o el jugador" });
     }
 });
 
